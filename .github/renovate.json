@@ -1,0 +1,12 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "local>myrotvorets/.github:renovate-config"
+    ],
+    "packageRules": [
+        {
+            "matchPackageNames": ["react", "react-dom", "@wordpress/api-fetch", "@wordpress/i18n", "@types/react", "@types/react-dom"],
+            "enabled": false
+        }
+    ]
+}
