@@ -36,7 +36,8 @@ final class Plugin {
 		if ( $is_enabled && ! empty( $_SERVER['HTTP_HOST'] ) && is_string( $_SERVER['HTTP_HOST'] ) ) {
 			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$host       = strtolower( $_SERVER['HTTP_HOST'] );
-			$is_enabled = 'myrotvorets.center' === $host || is_user_logged_in();
+			$domain     = defined( 'MYROTVORETS_PRIMARY_DOMAIN' ) ? (string) MYROTVORETS_PRIMARY_DOMAIN : 'myrotvorets.center';
+			$is_enabled = $domain === $host || is_user_logged_in();
 		}
 
 		return (bool) $is_enabled;
