@@ -17,12 +17,12 @@ final class Plugin {
 	public function plugins_loaded(): void {
 		add_filter( 'wp_sitemaps_enabled', [ $this, 'wp_sitemaps_enabled' ] );
 		add_action( 'wp_sitemaps_init', [ WP_Sitemaps_Criminals::class, 'register' ] );
+		add_filter( 'wp_sitemaps_add_provider', [ $this, 'wp_sitemaps_add_provider' ], 10, 2 );
 	}
 
 	public function init(): void {
 		add_filter( 'wp_sitemaps_post_types', [ $this, 'wp_sitemaps_post_types' ] );
 		add_filter( 'wp_sitemaps_max_urls', [ $this, 'wp_sitemaps_max_urls' ], 10, 2 );
-		add_filter( 'wp_sitemaps_add_provider', [ $this, 'wp_sitemaps_add_provider' ], 10, 2 );
 	}
 
 	/**
