@@ -9,7 +9,7 @@ use wpdb;
 // phpcs:disable WordPressVIPMinimum.Performance.LowExpiryCacheTime.CacheTimeUndetermined
 
 class WP_Sitemaps_Criminals extends WP_Sitemaps_Provider {
-	public const CACHE_TTL = 300;
+	public const int CACHE_TTL = 300;
 
 	public static function register(): void {
 		$provider = new self();
@@ -51,7 +51,7 @@ class WP_Sitemaps_Criminals extends WP_Sitemaps_Provider {
 			foreach ( $entries as $row ) {
 				$result[] = [
 					'loc'     => 'https://myrotvorets.center/criminal/' . $row->slug . '/',
-					'lastmod' => gmdate( 'c', strtotime( $row->last_modified ) ),
+					'lastmod' => gmdate( 'c', (int) strtotime( $row->last_modified ) ),
 				];
 			}
 
@@ -118,7 +118,7 @@ class WP_Sitemaps_Criminals extends WP_Sitemaps_Provider {
 
 				$sitemap_entry = [
 					'loc'     => $this->get_sitemap_url( '', $page ),
-					'lastmod' => gmdate( 'c', strtotime( $row->lastmod ) ),
+					'lastmod' => gmdate( 'c', (int) strtotime( $row->lastmod ) ),
 				];
 
 				$sitemaps[] = $sitemap_entry;
